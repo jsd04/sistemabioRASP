@@ -1,0 +1,67 @@
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+
+  <!-- <form action="/sistemabio/signin/" method="POST">
+    {% csrf_token %} 
+    {{form.as_p}}
+
+    <button>
+        resp
+    </button>
+</form> -->
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <div class="card mt-5 bg-info text-white rounded" style="--bs-bg-opacity: .7;">
+      <div class="card-header text-center pt-5">
+        <h1 class="h4 text-white">
+          Ingresar a la cuenta
+        </h1>
+      </div>
+      <img
+        class="rounded-circle mx-auto d-block logo m-4"
+        src="{% static 'sistemabio/img/logo.png' %}"
+        alt="Logo"
+      />
+      <div class="card-body">
+        <form action="/sistemabio/signin/" method="POST">
+          {% csrf_token %} 
+          <div class="mb-3">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              class="form-control bg-white text-dark "
+              name="username"
+              placeholder="Username"
+              autofocus
+            />
+             <!-- <label for="email">Correo:</label>
+            <input
+              type="email"
+              class="form-control bg-white text-dark "
+              name="email"
+              placeholder="Correo"
+              autofocus
+            />  -->
+          </div>
+          <div class="mb-3">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              class="form-control bg-white text-dark "
+              name="password"
+              placeholder="Password"
+            />
+          </div>
+          <button class="btn btn-info btn-block">
+            Entrar
+          </button>
+        </form>
+      </div>
+
+      <p class="text-center">¿No tienes una cuenta? <a href="/sistemabio/signup" class="text-info">Registrar</a></p>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

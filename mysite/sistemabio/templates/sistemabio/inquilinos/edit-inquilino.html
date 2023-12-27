@@ -1,0 +1,204 @@
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<header class="row" style="position: relative; height: 50vh; width: 100%;">
+  <div class="col s12 m11 l9 xl8 " style="position: absolute; top: 0px; height: 110%; left: 0px;">
+    <img alt="imagen1" src="{% static 'sistemabio/img/ba11.png' %}" class="responsive-image"
+      style="height: 120%; width: 80%; left: -10px; top: 0px; position: absolute; object-fit: cover;" />
+  </div>
+  <div class="col s12 m9 l9 xl8 white-text"
+    style="position: absolute; top: 70%; left: 30%; height: 100%; transform: translate(-50%, -50%); width: 50%;">
+    <h1 class="titulo" style="font-size:40px">
+      EDICION DE <b>INQUILINOS</b>
+    </h1>
+    <br>
+    <blockquote>
+      <h3 class="subtitulo black-text">
+        <b>
+          Aquí puedes editar la <br /> información de los <br /> inquilinos
+        </b>
+      </h3>
+    </blockquote>
+  </div>
+
+        <!-- <div class="col s4 hide-on-small-only" 
+            
+             style="position: absolute; top: 70%; left: 80%; height: 100%; transform: translate(-50%, -50%); width: 30%;" 
+        >
+            <h1 class="titulo" style="font-size:40px">
+              LISTADO DE <b>INQUILINOS</b>
+            </h1>
+            <blockquote>
+              <h4 class="subtitulo black-text" style="font-size:20px">
+                <b>
+                  Aquí puedes consultar los registros <br /> de los Inquilinos
+                </b>
+              </h4>
+            </blockquote>
+        </div> -->
+
+  <div class="col m6 l6 xl5 hide-on-small-only" style="height: 100%; position: absolute; top: 0%; right: 0%;">
+    <img alt="" src="{% static 'sistemabio/img/parteba8_2.png' %}" class="responsive-img"
+      style="position: absolute; right: 10px; top: 0px; height: 100%; width: 50%;">
+  </div>
+
+</header>
+<br />
+<br />
+<br />
+<div class="row justify-content-end">
+  <div class="col-3 align-self-end">
+    <a class="waves-effect waves-light text-white btn p-2 text-center  "
+      style="background: rgb(29, 240, 134);border-radius: 20px;" href="javascript:window.history.back(); ">
+      <i class="material-icons  text-white large rounded-circle btn p-2 text-center">arrow_back
+      </i> Regresar
+    </a>
+  </div>
+</div>
+<br />
+    
+    
+    <div class="col-md-4 mx-auto">
+      <div class="card">
+        <div class="card-header bg-danger text-center" style="--bs-bg-opacity: .7;">
+          <h3>Editar Usuario</h3>
+          {{title}}
+        </div>
+        <div class="card-body bg-danger p-2" style="--bs-bg-opacity: .3;">
+          <!-- {{form.as_p}}
+          {% csrf_token %}             
+             <form action="/sistemabio/new_inquilino/" method="POST" enctype="multipart/form-data">
+       -->
+<!-- actio="/sistemabio/edit_inquilino/" -->
+          <form  method="POST">
+            {% csrf_token %}            
+            <!-- <input type="hidden" name="_method" value="PUT" /> -->
+            <!-- <div class="mb-3">
+              <label for="nombre">Nombre:</label>
+              <input
+                type="text"
+                name="nombre"
+                class="form-control"
+                value="{{inquilino.nombre}}"
+                
+              />
+            </div>
+            <div class="mb-3">
+              <label for="ap_paterno">Apellido Paterno:</label>
+              <input
+                type="text"
+                name="ap_paterno"
+                class="form-control"
+                value="{{inquilino.ap_paterno}}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="ap_materno">Apellido Materno:</label>
+              <input
+                type="text"
+                name="ap_materno"
+                class="form-control"
+                value="{{inquilino.ap_materno }}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="curp">Curp:</label>
+              <input
+                type="text"
+                name="curp"
+                class="form-control"
+                value="{{inquilino.curp}}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="piso">No. Piso:</label>
+              <input
+                type="number"
+                name="piso"
+                class="form-control"
+                value="{{inquilino.piso}}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="departamento">No. Departamento:</label>
+              <input
+                type="text"
+                name="departamento"
+                class="form-control"
+                value="{{inquilino.departamento}}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="telefono">No. Teléfono:</label>
+              <input
+                type="text"
+                name="telefono"
+                class="form-control"
+                value="{{inquilino.telefono}}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="correo">Correo:</label>
+              <input
+                type="email"
+                name="correo"
+                class="form-control"
+                value="{{inquilino.correo}}"
+              />
+            </div> -->
+            <!-- <div class="mb-3">
+              <label for="fecha_nac">Fecha de Nacimiento:</label> -->
+              <!-- type="date" -->
+              <!-- <input
+                name="fecha_nac"
+                class="form-control"
+                value="{{inquilino.fecha_nac}}"
+              />
+            </div> -->
+            <!-- <div class="mb-3">
+              <label for="id_perfil">Perfil de Usuario:</label>
+              <br>
+              <input
+              value="{{inquilino.id_perfil}}"/>
+                <select name="id_perfil" class="form-control">
+                  <option value="{{inquilino.id_perfil}}" selected="selected">{{inquilino.id_perfil}}</option>
+                </select> -->
+                 <!-- <label for="id_usuario">Usuario:</label>
+                      <select class="form-control" type="text" id="id_usuario" name="id_usuario" >
+                        <option value="{{inquilino.id_usuario}}" selected="selected">Id {{inquilino.id_usuario}} -> {{inquilino.id_usuario}} {{inquilino.nombre}} {{inquilino.ap_paterno}} {{inquilino.ap_materno}}</option>
+                      </select readonly>
+                      
+                      <label for="id_tipo_sesion">Tipo de sesion:</label>
+                      <select class="form-control" type="text" id="id_tipo_sesion" name="id_tipo_sesion" >
+                        <option value="1" selected="selected">FACIAL</option>
+                      </select readonly>-->
+            <!-- </div> -->
+            <!-- <div class="mb-3">
+              <label for="id_status">Status:</label>
+              <br>
+              <select name="id_status" required>
+                <option value="1">ALTA</option>
+                <option value="2"> BAJA </option>
+                <option value="3"> PENDIENTE </option>
+                <option value="4"> COMPLETO </option>
+              </select>
+            </div> -->
+            <br>
+            {{form}}
+            <br>
+            
+            
+            <button class="btn btn-info w-100" type="submit">
+              Guardar 
+              <i class="material-icons "> save</i>
+            </button>
+          </form> 
+        
+        </div>
+      </div>
+    </div>
+    <br>
+{% endblock %} 

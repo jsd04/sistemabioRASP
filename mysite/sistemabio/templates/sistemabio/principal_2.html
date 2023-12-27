@@ -1,0 +1,154 @@
+<!-- -->
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+    <div>
+        <header class="row" style="position:relative; height: 50vh; width:100%">
+            <br>
+            <br>
+           <div
+              class="col s12 m11 l9 xl8 "
+              style="position: absolute; top: 0px; height: 100%; left: 0px;"
+            >
+                <img alt="" src="{% static 'sistemabio/img/ba5.png' %}" 
+                        style="position: absolute; right: 60px; top: 20%; width: 100%; height:80%"
+                    >
+                <img alt="" src="{% static 'sistemabio/img/ba19.png' %}"
+                        style="position: absolute; right: 62px; top: 0px; width: 100%; height:90%">
+                
+            </div>
+            <div class="col s12 m9 l9 xl8"
+                style="position: absolute; top: 50%; left: 70%; transform: translate(-50%, -50%); height: 90%; width: 50%;"
+            >
+                <img alt=""  src="{% static 'sistemabio/img/uno.png' %}" 
+                        style="position: absolute; right: 30px; top:0px;  width: 60%; height:120%;"
+                    >
+            </div>
+            <div class="col s12 m9 l9 xl8" 
+                style="position: absolute; top: 70%; left: 30%; transform: translate(-50%, -50%); height: 100%; width: 50%;"
+            >
+                <h1 class="text-black" style="font-family:'Franklin Gothic Medium'; font-size: 60px;">
+                    <b>Administrador</b>
+                </h1>
+                <blockquote>
+                    <p style="font-size: 30px;">Menú principal</p>
+                    
+                        <b>
+                        Registro de información de los inquilinos del edificio de condominio
+                        </b> 
+                </blockquote>
+            </div>
+        </header>
+        <main class="row" style=" border: 0.0px solid rgb(220, 220, 200); margin: 50px 0px;" >
+            <div class="col s12 m6 l6 xl6 d-flex flex-column h-100">
+                <div class="MenuActionContainer text-center  bg-success p-2 " style="--bs-bg-opacity: .5;">
+                    <i class="material-icons text-white bg-success p-2" style="border-radius: 20px;">group</i>
+                    <h5 class="text-black" style="font-family:'Franklin Gothic Medium'" ><!--, sans-serif 'Franklin Gothic Medium', Arial,Arial Narrow ;"-->  
+                        <b>Inquilinos</b>
+                    </h5>
+                    <p class="textHeight">Aquí puedes consultar el historial de los registros de inquilinos, agregar nuevos y darle seguimiento...</p>
+                    <a class="waves-effect waves-light text-white btn bg-success p-2 text-center " 
+                        href="{% url 'sistemabio:inquilinos' %}" style="border-radius: 20px;" 
+                    >
+                    <!-- href="/sistemabio/inquilinosinicial" -->
+                        Ver registros 
+                        <!-- <i class="material-icons  text-white large rounded-circle btn bg-success p-2 text-center ">fact_check</i> -->
+                        <i class='far fa-list-alt' style='font-size:24px'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m6 l6 xl6 d-flex flex-column h-100">
+                <div class="MenuActionContainer bg-danger p-2 text-center " style="--bs-bg-opacity: .5;">
+                    <i class="material-icons text-white bg-danger p-2" style="border-radius: 20px;">person_add</i>
+                    <h5 class="text-black" style="font-family: 'Franklin Gothic Medium'" >
+                        <strong>Añadir Inquilino</strong>
+                    </h5>
+                    <p class="textHeight">Aquí puedes añadir la  
+                        <br>información básica del inquilino nuevo, sin importar el tipo de inquilino que es... 
+                    </p>
+                    <!--div class="container waves-effect waves-light text-white btn bg-danger  text-center  " style="border-radius: 20px;"-->
+                    
+                    <a class="waves-effect waves-light text-white btn bg-danger p-2 text-center "  style="border-radius: 20px;"
+                    href="/sistemabio/new_inquilino" 
+                    >
+                    Añadir
+                        <i class='fas fa-user-plus' style='font-size:24px;'></i>
+                    </a>
+                    <!--/div-->
+                    
+                </div>
+            </div>
+            <div class="col s12 m6 l6 xl6 d-flex flex-column h-100">
+                <div class=" MenuActionContainer text-center bg-info p-2" style="--bs-bg-opacity: .8;">
+                    <!-- "background: rgb(107, 234, 225)" -->
+                    <i class="material-icons text-white medium  p-2 rounded-circle" style="background: rgb(6, 127, 202)">receipt_long</i>
+                    <h5 class="text-black" style="font-family: 'Franklin Gothic Medium'" >
+                        <b>Añadir biométricos</b>
+                    </h5>
+                    <p class="textHeight">Aquí puedes añadir
+                        <br>los datos biométricos para asociarlos a los inquilinos, ya sea facial, voz o huella ...
+                    </p>
+                    <a class="waves-effect waves-light text-white btn p-2 text-center  " style="background:rgb(6, 127, 202);border-radius: 20px;"
+                        href="/sistemabio/new_biometricos"
+                        >
+                            Biométrico
+                            <!-- <i class="material-icons text-white rounded-circlet btn p-2 text-center ">add</i> -->
+                            <i class='fas fa-plus-circle' style='font-size:24px'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m6 l6 xl6 d-flex flex-column h-100">
+                <div class=" MenuActionContainer text-center  bg-warning p-2" style="--bs-bg-opacity: .5;">
+                    <i class="material-icons text-white medium  bg-warning p-2 rounded-circle">search</i>
+                    <h5 class="text-black" style="font-family: 'Franklin Gothic Medium'" >
+                        Buscar Inquilino
+                    </h5>
+                    <p class="textHeight">Aquí puedes buscar un inquilino y ver su información sin importar que tipo de inquilino sea.</p>
+                    <a class="waves-effect waves-light text-white btn bg-warning p-2 text-center  " 
+                    href="/sistemabio/search_inquilino"  style="border-radius: 20px;"
+                    >
+                        Buscar
+                        <!-- <i class="material-icons  text-white large rounded-circle btn bg-warning p-2 text-center ">person_search -->
+                        <i class="material-icons" style='font-size:24px'>person_search </i>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m6 l6 xl6 d-flex flex-column h-100">
+                <div class=" MenuActionContainer text-center p-2" style="background:rgb(255, 230, 89) ">
+                    <i class="material-icons text-white medium p-2 rounded-circle" style="background:rgb(253, 220, 29);border-radius: 20px;">description</i>
+                    <!-- <i class='fas fa-file-alt text-white rounded-circle' style='font-size:24px;background:rgb(212, 212, 37);border-radius: 20px;'></i> -->
+                    <h5 class="text-black" style="font-family: 'Franklin Gothic Medium'" >
+                        Generar Reporte
+                    </h5>
+                    <p class="textHeight">Aqui puedes generar un reporte indidcando elk tipo de usuario que deseas visualizar.</p>
+                    <a class="waves-effect waves-light text-white btn p-2 text-center " style="background:rgb(253, 220, 29);border-radius: 20px;" 
+                    href="/sistemabio/reporte"  
+                    >
+                        Reporte
+                        <!-- <i class="material-icons  text-white large rounded-circle btn bg-warning p-2 text-center ">person_search -->
+                        <!-- <i class="fa fa-ksearch text-success p-2" style="font-size:24px; border-radius: 20px;"></i> -->
+                        <i class='fas fa-file-alt' style='font-size:24px'></i>
+                    </a>
+                </div>
+            </div>
+            <!--div class="row justify-content-around">
+                <div class="col-2 align-self-center">
+                    <div class= "MenuActionContainer text-center p-2" style="background:rgb(255, 230, 89) ">
+                        <h5 class="text-black" style="font-family: 'Franklin Gothic Medium'" >
+                            <b>Cerrar sesion</b>
+                        </h5>
+                        <a class="waves-effect waves-light text-dark btn p-2 text-center" style="background:rgb(255, 255, 0)" 
+                            href="/administradores/logout" style="border-radius: 20px;"
+                        >
+                            <i class="material-icons  text-dark large rounded-circle">logout
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div-->
+            
+        
+        </main>
+    </div>
+
+{% endblock %}

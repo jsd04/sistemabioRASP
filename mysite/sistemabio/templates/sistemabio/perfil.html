@@ -1,0 +1,101 @@
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+    <header class="row" style="position: relative; height: 50vh; width: 100%;">
+        <div
+              class="col s12 m11 l9 xl8 "
+              style="position: absolute; top: 0px; height: 120%; left: 0px; right: 40px; width: 100%;"
+            >
+            <img alt="" src="{% static 'sistemabio/img/ba19_2.png' %} " 
+                    style="position: absolute; right: -12px; top: 20%; width: 100%; height:80%"
+                >
+            <img alt="" src="{% static 'sistemabio/img/ba19_4.png' %}"
+                    style="position: absolute;  right: -12px; top: 0px; width: 100%; height:90%">
+        </div>
+        <div class="col s4 hide-on-small-only" 
+            
+             style="position: absolute; top: 70%; left: 80%; height: 100%; transform: translate(-50%, -50%); width: 30%;" 
+        >
+            <h1 class="titulo" style="font-size:40px">
+              Perfil de <b> Administrador</b>
+            </h1>
+            <blockquote>
+              <h4 class="subtitulo black-text" style="font-size:20px">
+                <b>
+                  Aquí puedes visualizar tú <br /> información como Administrador
+                </b>
+              </h4>
+            </blockquote>
+        </div>
+ <!--style="height: 100%; position: absolute; top: 0%; right: 0%;"
+ style="position: absolute; top: 50%; left: 30%; height: 100%; transform: translate(-50%, -50%); width: 50%;"
+ -->
+        <div class=" col s12 m9 l9 xl8 white-text" style="height: 100%; position: absolute; top: 0%; right: 50%;">
+          <img alt="" src="{% static 'sistemabio/img/parteba12_3.png' %}" 
+          class="responsive-img" style="position: absolute; right: 0px; top: 0px; height: 120%; width: 50%;">
+        </div>  
+    </header>
+      <br />
+      <br />
+      <br />
+  <div class="container p-5">
+        <h3 style="font-family: 'Franklin Gothic Medium'">Mi información</h3>  
+        <div class="row" style=" border: 0.5px solid rgb(198, 242, 122); margin: 25px 0px;">
+          
+          <div class="col" style="background:rgb(117, 243, 205);">
+            <br>
+                 <h3>
+                  {{user.username}}
+                 </h3>
+                 <div class="container p-2">
+                      <div class="row">
+                       <div class="col-md-8 ">
+                          <div class="card-columns">
+                             <div class="card animated fadeInDown">
+                                <div class="card-body">
+                                  <p>Nombre: {{ user.first_name }}  {{ user.last_name }} </p>
+                                  <p>Correo: {{ user.email }} </p>
+                                </div>
+                             </div>
+                          </div>
+                        </div>
+                      </div>
+                 </div>
+                  <!-- <p>Fecha de creación: {{ user.creation_date }}</p>              -->
+                  <p>Fecha de última modificación: {{ user.last_login }}</p>             
+         
+           </div>
+        </div>
+        <!--  
+        <h3 style="font-family: 'Franklin Gothic Medium'">Todos los Administradores</h3>
+        <div class="row" style=" border: 0.8px solid rgb(19, 159, 229); margin: 25px 0px; background:rgb(126, 221, 200)">
+        
+          {% if users %}
+         <div class="col-md-3">
+           <br>
+           <div class="card">
+             <div class="card-body ">
+               <h4>
+                {{ name }}
+               </h4>
+               <p>Correo: {{ email }} </p>
+               <p>No. Teléfono: {{ telefono }} </p>
+               <p>Domicilio: {{ domicilio }} </p>
+               <p>Fecha de creación: {{ date }}</p>
+             </div>
+           </div>
+           <br>
+         </div>
+         {% else %}
+         <div class="card mx-auto">
+           <div class="card-body">
+             <h1>Hola {{name}}
+             </h1>
+             <p clsss="lead">No hay otros administradores.</p>
+           </div>
+         </div>
+         {% endif %} 
+        </div> -->
+  </div>
+
+{% endblock %} 

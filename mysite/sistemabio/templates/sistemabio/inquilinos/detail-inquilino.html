@@ -1,0 +1,238 @@
+{% extends "sistemabio/base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <header class="row" style="position: relative; height: 50vh; width: 100%;">
+        <div
+              class="col s12 m11 l9 xl8 "
+              style="position: absolute; top: 0px; height: 120%; left: 0px; right: 40px; width: 100%;"
+            >
+            <img alt="" src= "{% static 'sistemabio/img/ba5_1.png' %}" 
+                    style="position: absolute; right: -12px; top: 20%; width: 100%; height:80%"
+                >
+            <img alt="" src="{% static 'sistemabio/img/ba6_1.png' %}"
+                    style="position: absolute;  right: -12px; top: 0px; width: 100%; height:90%">
+        </div>
+        <div class="col s4 hide-on-small-only" 
+            
+             style="position: absolute; top: 70%; left: 80%; height: 100%; transform: translate(-50%, -50%); width: 30%;" 
+        >
+            <h1 class="titulo" style="font-size:40px">
+              DETALLE DE <b>INQUILINOS</b>
+            </h1>
+            <blockquote>
+              <h4 class="subtitulo black-text" style="font-size:20px">
+                <b>
+                  Aquí puedes consultar los datos registrados<br /> por Inquilino
+                </b>
+              </h4>
+            </blockquote>
+        </div>
+ 
+        <div class=" col s12 m9 l9 xl8 white-text" style="height: 100%; position: absolute; top: 0%; right: 50%;">
+          <img alt="" src="{% static 'sistemabio/img/parteba15_2.png' %}" 
+          class="responsive-img" style="position: absolute; right: 0px; top: 0px; height: 120%; width: 50%;">
+        </div>  
+    </header>
+      <br />
+      <br />
+      <br />
+      <div class="row justify-content-end">
+        <div class="col-3 align-self-end">
+          <a class="waves-effect waves-light text-white btn p-2 text-center  " style="background: rgb(29, 240, 134); border-radius: 20px;"
+                    href="javascript:window.history.back(); " 
+                > 
+            <i class="material-icons  text-white large rounded-circle btn p-2 text-center">arrow_back
+            </i>       Regresar              
+          </a>
+        </div>
+      </div> 
+      
+  <div class="container p-5">
+        <h3 style="font-family: 'Franklin Gothic Medium'">Inquilinos registrados</h3>
+        <!--h1 class="bg-info">Hola {{Administrador.name}}</h1-->
+        <div class="row justify-content-end">
+          <div class="col-3 align-self-center">
+            <a class="btn btn-outline-info text-center" style=" background-image: var(--bs-gradient);border-radius: 20px;"
+              href="/sistemabio/new_inquilino">
+              <p style="font-family: 'Franklin Gothic Medium'">
+                Añadir inquilino <i class="material-icons rounded-circle ">person_add</i>
+              </p>
+            </a>
+          </div>
+        </div>
+
+  <div class="row" style=" border: 0.5px solid rgb(1, 17, 135); margin: 25px 0px; background:rgb(144, 221, 227)">
+  <!---->
+  <div class="col-md">
+    <br>
+    <!-- <div class="card" style=" border: 1.3px solid rgb(64, 113, 247);  "> "{% url 'sistemabio:edit_inquilino' inquilino.id_usuario %}" -->
+      <div class="card-body box-profile ">
+        <!-- <div class="text-center">
+          <img class="profile-user-img img-fluid img-circle" src="{% static 'sistemabio/images/jpg' %}"
+            alt="User profile picture">
+        </div> -->
+        <h3 class="d-flex p-2 flex-row-reverse">
+          <a href="{% url 'sistemabio:edit_inquilino' inquilino.id_usuario %}">
+            <i class='fas fa-edit' style='font-size:36px'></i>
+          </a>
+        </h3>
+    
+        <h3 class="profile-username text-center"> {{ inquilino.nombre}} {{ inquilino.ap_paterno}} {{ inquilino.ap_materno}}</h3>
+        <!-- Usuario:
+        <h4 class="card-title ">
+          {{ inquilino.nombre}} {{ inquilino.ap_paterno}} {{ inquilino.ap_materno}}
+        </h4> -->
+        <br>
+        <!-- <p class="text-muted text-center">{{ inquilino.id_perfil }}</p> -->
+        <p>ID de usuario: {{ inquilino.id_usuario }}</p>
+        <p>Tipo de usuario: {{ inquilino.get_id_perfil_display }}</p>
+        <p>Curp: {{ inquilino.curp }} </p>
+        <p>No. Piso: {{ inquilino.piso }} </p>
+        <p>No. Departamento: {{ inquilino.departamento }} </p>
+        <p>No. Teléfono: {{ inquilino.telefono }} </p>
+        <p>Correo: {{ inquilino.correo }} </p>
+        <p>Fecha de nacimiento: {{inquilino.fecha_nac }}</p>
+        <p>Status: {{inquilino.get_id_status_display}}</p>
+        <p>Fecha de creación: {{ inquilino.fecha_creado }}</p>
+        <p>Fecha de actualización: {{ inquilino.fecha_actualizado }}</p>
+        
+        <!-- {% for sesion in sesiones %} 
+        {% if sesion.id_usuario_id == inquilino.id_usuario %}
+        <h1>Datos Biométricos</h1>
+           <p>Id sesion: {{ sesion.id_sesion }}</p>
+           <p>id_usuario: {{sesion.id_usuario_id}}</p>
+           <p>id_tipo_sesion : {{sesion.id_tipo_sesion }}</p>
+           <p>dato : {{sesion.dato}} </p>
+           <p> fecha_creacion de biométrico: {{sesion.fecha_creacion}} </p>
+           <p> fecha_actualizacion de biométrico: {{sesion.fecha_actualizacion}}</p>
+          {% endif %} 
+        {% endfor %} -->
+        <p>
+        
+       </p>
+        <!-- -->
+        <ul class="list-group list-group-unbordered mb-3 custom-list ">
+          {% if sesiones %}
+          <h1>Datos Biométricos</h1>
+          {% endif %}
+           <!-- {% for sesion in sesiones %} 
+            {% if sesion.id_usuario_id == inquilino.id_usuario %}
+              {% if sesion.id_tipo_sesion == '1' %}
+                <li class="list-group-item">
+                  <b>Facial </b> 
+                  {% if sesion.completado == True %}
+                  <input name="completado" type=checkbox checked onclick="return false;"/>
+                  {% else %}  
+                  <input name="completado" type=checkbox  onclick="return false;"/>
+                  {% endif %} 
+                  <p>Id sesion: {{ sesion.id_sesion }}</p>
+                  <p>id_usuario: {{sesion.id_usuario_id}}</p>
+                  <p>id_tipo_sesion : {{sesion.get_id_tipo_sesion_display}} </p>
+                  <p>dato : {{sesion.dato}} </p>
+                  <p>dato : 
+                    <img src="{{python6423}}">
+                  </p>
+                  <p>Fecha de creación de biométrico: {{sesion.fecha_creacion}} </p>
+                  <p>Fecha de actualización de biométrico: {{sesion.fecha_actualizacion}}</p>
+                </li>
+              {% endif %}
+              {% if sesion.id_tipo_sesion == '2' %}
+                <li class="list-group-item">
+                  <b>Voz</b>
+                  {% if sesion.completado == True %}
+                  <input name="completado" type=checkbox checked onclick="return false;"/>
+                  {% else %}  
+                  <input name="completado" type=checkbox  onclick="return false;"/>
+                  {% endif %}
+                  <p>Dato: {{sesion.dato}}</p>
+                  <p>Id sesion: {{ sesion.id_sesion }}</p>
+                  <p>id_usuario: {{sesion.id_usuario_id}}</p>
+                  <p>id_tipo_sesion :  {{sesion.get_id_tipo_sesion_display}}</p>
+                  <p>dato : {{sesion.dato}} </p>
+                  <p>Fecha de creación de biométrico: {{sesion.fecha_creacion}} </p>
+                  <p>Fecha de actualización de biométrico: {{sesion.fecha_actualizacion}}</p>
+                </li>
+              {% endif %}
+              {% if sesion.id_tipo_sesion == '3' %}
+                <li class="list-group-item">
+                  <b>Huella</b> <p> completado : {{sesion.completado}}</p> -->
+                <!--   {% if sesion.completado == True %}
+                  <input name="completado" type=checkbox checked onclick="return false;"/>
+                  {% else %}  
+                  <input name="completado" type=checkbox  onclick="return false;"/>
+                  {% endif %} 
+                  <p>Dato: {{sesion.dato}}</p>
+                  <p>Id sesion: {{ sesion.id_sesion }}</p>
+                  <p>id_usuario: {{sesion.id_usuario_id}}</p>
+                  <p>id_tipo_sesion :  {{sesion.get_id_tipo_sesion_display}}</p>
+                  <p>Dato : {{sesion.dato}} </p>
+                  <p>Fecha de creación de biométrico: {{sesion.fecha_creacion}} </p>
+                  <p>Fecha de actualización de biométrico: {{sesion.fecha_actualizacion}}</p>
+                </li>
+              {% endif %}
+            {% endif %} 
+           {% endfor %} -->
+           {% for sesion in sesiones %}
+           {% if sesion.id_usuario_id == inquilino.id_usuario %}
+             <li class="list-group-item">
+               <!-- <p>Tipo de sesión: {{ sesion.get_id_tipo_sesion_display }}</p> -->
+               {% if sesion.id_tipo_sesion == '1' %}
+                 <b>Facial</b>
+               {% elif sesion.id_tipo_sesion == '2' %}
+                 <b>Voz</b>
+               {% elif sesion.id_tipo_sesion == '3' %}
+                 <b>Huella</b>               
+
+               {% endif %}
+               {% if sesion.completado %}
+                 <input name="completado" type="checkbox" checked onclick="return false;"/>
+               {% else %}
+                 <input name="completado" type="checkbox" onclick="return false;"/>
+               {% endif %}
+               <p>Id sesión: {{ sesion.id_sesion }}</p>
+               <p>Id usuario: {{ sesion.id_usuario_id }}</p>
+               <p>Dato: {{ sesion.dato }}</p>
+               {% if sesion.id_tipo_sesion == '1'  or sesion.id_tipo_sesion == '3' %}
+                <p>Dato : 
+                  <img src="{{python6423}}">
+                </p>
+               {% endif %}
+               <p>Fecha de creación de biométrico: {{ sesion.fecha_creacion }}</p>
+               <p>Fecha de actualización de biométrico: {{ sesion.fecha_actualizacion }}</p>
+             </li>
+           {% endif %}
+         {% endfor %}
+           <br>
+           {% if sesiones|length < 3 %}
+           <div class="d-flex justify-content-end">
+             <a class="waves-effect waves-light text-white btn p-2 text-center  " style="background:rgb(6, 127, 202);border-radius: 20px;"
+               href="/sistemabio/new_biometricos"
+             >
+               Añadir Biométrico
+               <i class="material-icons text-white rounded-circlet btn p-2 text-center ">fingerprint mic photo_camera
+               </i>
+             </a>
+             <!-- <p>La cantidad de sesiones es: {{ sesiones|length }}</p> -->
+           </div>
+           {% endif %}
+        </ul>
+         
+       
+        <!-- DELETE REQUEST -->
+        
+        <a class="btn btn-danger" href="{% url 'sistemabio:darbaja_inquilino' inquilino.id_usuario  %}">Dar de baja
+          <i class='fas fa-trash-alt' style='font-size:24px;color:rgb(243, 243, 243)'></i></a>
+        
+        
+
+        
+        </div>
+    <br>
+  </div>
+  
+</div>
+</div>
+
+{% endblock %} 

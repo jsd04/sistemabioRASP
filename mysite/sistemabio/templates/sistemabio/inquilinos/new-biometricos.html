@@ -1,0 +1,160 @@
+
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+    <header class="row" style="position: relative; height: 50vh; width: 100%;">
+      <div class="col s12 m11 l9 xl8 " style="position: absolute; top: 0px; height: 110%; left: 0px;">
+        <img alt="imagen1" src="{% static 'sistemabio/img/ba8.png' %}" class="responsive-image"
+          style="height: 90%; width: 80%; left: 0px; top: 0px; position: absolute; object-fit: cover;" />
+      </div>
+      <div class="col s12 m9 l9 xl8 white-text"
+        style="position: absolute; top: 50%; left: 30%; height: 100%; transform: translate(-50%, -50%); width: 50%;">
+        <br>
+        <br>
+        <blockquote>
+          <br>
+          <br>
+          <h2 class="subtitulo black-text ">
+            <b>
+              Aquí puedes añadir los datos <br /> biométricos
+            </b>
+          </h2>
+        </blockquote>
+      </div>
+    
+      <div class="col m6 l6 xl5 hide-on-small-only" style="height: 100%; position: absolute; top: 0%; right: 0%;">
+        <img alt="" src="{% static 'sistemabio/img/parteba11_13.png' %}" class="responsive-img"
+          style="position: absolute; right: -5px; top: 0px; height: 100%; width: 50%;">
+      </div>
+    </header>
+    <br />
+    <br />
+    <br />
+    <div class="row justify-content-end">
+      <div class="col-3 align-self-end">
+        <a class="waves-effect waves-light text-white btn p-2 text-center  "
+          style="background: rgb(29, 240, 134);border-radius: 20px;" href="javascript:window.history.back(); ">
+          <i class="material-icons  text-white large rounded-circle btn p-2 text-center">arrow_back
+          </i> Regresar
+        </a>
+      </div>
+    </div>
+    <br >
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header bg-success  text-center" style="--bs-bg-opacity: .7;">
+          <h3 class="text-white">Datos Biométricos</h3>
+        </div>
+        <div class="card-body text-left bg-success  p-2" style="--bs-bg-opacity: .3;">
+          <form action="/sistemabio/new_biometricos/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            
+            <p class="text-dark" style="font-size: 20px;">
+              Agrega por lo menos un dato biométrico
+            </p>
+            <br>
+            <div class="mb-3">
+              <label for="id_usuario">Usuario</label>
+                <select class="form-control" id="id_usuario">
+                  <option value="">--------</option>
+                  {% for inquilino in inquilinos %}
+                  <option value="{{inquilino.id_usuario}}">{{inquilino.id_usuario}} -> {{inquilino.nombre}} {{inquilino.ap_paterno}} {{inquilino.ap_materno}} </option>
+                  
+                  {% endfor %}
+                </select>
+                <h5></h5>
+                <!-- {{ form }} -->
+              <label for="id_tipo_sesion">Tipo de sesión
+                <i class="material-icons small rounded-circle " style="font-size:50px;">photo_camera</i>
+                <i class="material-icons small rounded-circle text-dark" style="font-size:40px;">fingerprint</i>
+                <i class="material-icons small rounded-circle text-dark" style="font-size:40px;">mic</i>
+              </label>
+                <select class="form-control" id="id_tipo_sesion">
+                  <option value="">--------</option>
+                  <option value="1">FACIAL</option>
+                  <option value="2">VOZ</option>
+                  <option value="3">HUELLA</option>
+                </select>
+                <br>
+                <h4></h4>
+                <script  language="JavaScript">
+                  let seleccionar = document.querySelector("#id_tipo_sesion");
+                  let parr1 = document.querySelector("h5");
+                  let parr2 = document.querySelector("h4");
+                  let usuario = document.querySelector("#id_usuario");
+                  
+                  seleccionar.addEventListener("change", establecerSesion);
+                  // usuario.addEventListener("change", establecerUsuario);
+                  // function establecerUsuario(){
+                  //   let eleccion_usuario = usuario.value;
+                  //   console.log("Entrando a funcion de usuario ", eleccion_usuario);
+                  //   parr1.innerHTML = "Usuariojjj";
+                  // }
+                  function establecerSesion() {
+                    let eleccion = seleccionar.value;
+                    let eleccion_usuario = usuario.value;
+                    if (eleccion_usuario === "") {
+                      parr1.innerHTML = "Selecciona una opción valida";
+                    } else if (eleccion === "1") {
+                       window.location.href = "/sistemabio/facial/"+ eleccion_usuario;
+                       console.log("Entrando a Prueba de Foto ", eleccion);
+                       console.log("Entrando con id de usuario: ", eleccion_usuario);
+                       parr2.innerHTML = " ";parr1.innerHTML = "";
+                    } else if (eleccion === "2") {
+                      window.location.href= "/sistemabio/voz3/"+ eleccion_usuario;
+                      console.log("Entrando a Prueba de Voz ", eleccion);
+                      console.log("Entrando con id de usuario: ", eleccion_usuario);
+                      parr2.innerHTML = " ";  parr1.innerHTML = "";
+                    // } else if (eleccion === "2") {
+                    //   window.location.href=" /sistemabio/voz/";
+                    //   console.log("Entrando a Prueba de Voz ", eleccion);
+                    //   // console.log("Entrando con id de usuario: ", eleccion_usuario);
+                    //   parr2.innerHTML = " ";  parr1.innerHTML = "";
+                    } else if (eleccion === "3") {
+                        window.location.href="/sistemabio/huella/"+ eleccion_usuario;
+                        // parr2.innerHTML = "Huella";
+                        console.log("Entrando a Prueba de Huella", eleccion);
+                        console.log("Entrando con id de usuario: ", eleccion_usuario);
+                        parr2.innerHTML = " ";parr1.innerHTML = "";
+                      } else {
+                        parr2.innerHTML = "Selecciona una opción valida";
+                        // window.location.href="/sistemabio/huella";
+                        console.log("Entrando a normal -> aquí mismo");
+                    }
+                  }
+                </script>
+              
+            </div>   
+          </form>
+                
+             <!-- <div class="row text-center">
+               <div class="col s6 start">
+                 <a class=" btn btn-warning active" aria-current="page" href="/sistemabio/signin">
+                   Si
+                   <i class="material-icons right">send</i>
+                  </a>
+                </div>
+                <div class="col s6 center">
+                  <a class="btn btn-outline-info" href="/sistemabio/signup">
+                    Más tarde
+                      <i class="material-icons right">edit_note</i>
+                    </a>
+                  </div>
+                </div> -->
+                <!-- </div> -->
+                
+              <!--  <br>
+                 <button class="btn btn-info w-100" type="submit">
+                  Guardar 
+                  <i class="material-icons "> save</i>
+                </button> 
+                <br>-->
+                <br>
+              </div>
+        </div>
+          <br>
+          <br>
+          
+    </div>
+        {% endblock %}
+        

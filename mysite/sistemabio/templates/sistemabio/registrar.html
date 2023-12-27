@@ -1,0 +1,105 @@
+{% extends "sistemabio/base_2.html" %}
+{% load static %}
+{% block content %}
+    <header class="row" style="position: relative; height: 50vh; width: 100%;">
+        <div
+              class="col s12 m11 l9 xl8 "
+              style="position: absolute; top: 0px; height: 120%; left: 0px; right: 40px; width: 100%;"
+            >
+            <img src="{% static 'sistemabio/img/ba5_1.png' %}" alt="" 
+                    style="position: absolute; right: -12px; top: 20%; width: 100%; height:80%"
+                >
+            <img src="{% static 'sistemabio/img/ba6_1.png' %}" 
+             style="position: absolute;  right: -12px; top: 0px; width: 100%; height:90%">
+        </div>
+        <div class="col s4 hide-on-small-only" 
+            
+             style="position: absolute; top: 70%; left: 80%; height: 100%; transform: translate(-50%, -50%); width: 30%;" 
+        >
+            <h1 class="titulo" style="font-size:40px">
+              ¿Qué usuario <b>eres? </b>
+            </h1>
+            <blockquote>
+              <h4 class="subtitulo black-text" style="font-size:20px">
+                <b>
+                  Aquí Indica en que área de <br /> usuarios perteneces
+                </b>
+              </h4>
+            </blockquote>
+        </div>
+ <!--style="height: 100%; position: absolute; top: 0%; right: 0%;"
+ style="position: absolute; top: 50%; left: 30%; height: 100%; transform: translate(-50%, -50%); width: 50%;"
+ -->
+        <div class=" col s12 m9 l9 xl8 white-text" style="height: 100%; position: absolute; top: 0%; right: 50%;">
+          <img src="{% static 'sistemabio/img/parteba6.png' %}"  
+          class="responsive-img" style="position: absolute; right: 0px; top: 0px; height: 120%; width: 50%;">
+        </div>  
+    </header>
+      <br />
+      <br />
+      <br />
+      <div class="row justify-content-end">
+        <div class="col-3 align-self-end">
+          <a class="waves-effect waves-light text-white btn p-2 text-center  " style="background: rgb(29, 240, 134); border-radius: 20px;"
+                    href="javascript:window.history.back(); " 
+                > 
+            <i class="material-icons  text-white large rounded-circle btn p-2 text-center">arrow_back
+            </i>       Regresar              
+          </a>
+        </div>
+      </div>
+    
+    <main class="row" style=" border: 0.0px solid rgb(220, 220, 200); margin: 50px 0px;" >
+            <div class="col s12 m6 l6 xl6">
+                <div class="MenuActionContainer text-center  bg-success p-2 " style="--bs-bg-opacity: .5;">
+                    <i class="material-icons text-white bg-success p-2" style="border-radius: 20px;">person</i>
+                    <h5 class="text-black" style="font-family:'Franklin Gothic Medium'" ><!--, sans-serif 'Franklin Gothic Medium', Arial,Arial Narrow ;"-->  
+                        <b>Inquilinos</b>
+                    </h5>
+                    <p class="textHeight">El inquilino es la persona que vive en el condominio...</p>
+                    <a class="waves-effect waves-light text-white btn bg-success p-2 text-center " 
+                        href="/sistemabio/inquilinos/add" style="border-radius: 20px;"
+                    >
+                      Seleccionar<i class="material-icons  text-white btn bg-success p-2 text-center">check_box</i>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m6 l6 xl6 align-self-center">
+                <div class="MenuActionContainer bg-danger p-2 text-center " style="--bs-bg-opacity: .5;">
+                    <i class="material-icons text-light bg-danger p-2 rounded-circle" style="center">group</i>
+                    <h5 class="text-black" style="font-family: 'Franklin Gothic Medium'" >
+                        <strong>Visitantes</strong>
+                    </h5>
+                    <p class="textHeight">La persona visitante es la que es invitada 
+                        <br>sin necesidad de ser perteneciente dentro del edificio....
+                    </p>
+                    <!--div class="container waves-effect waves-light text-white btn bg-danger  text-center  " style="border-radius: 20px;"-->
+                        
+                        <a class="waves-effect waves-light text-white btn bg-danger p-2 text-center "  style="border-radius: 20px;"
+                        href="/sistemabio/visitantes/add" 
+                        >
+                        Seleccionar<i class="material-icons  text-white btn bg-danger p-2 text-center">check_box</i>
+                        </a>
+                    <!--/div-->
+                    
+                </div>
+            </div>
+            <div class="col s12 m6 l6 xl6">
+                <div class=" MenuActionContainer text-center  bg-warning p-2" style="--bs-bg-opacity: .5;">
+                    <i class="material-icons text-white medium  bg-warning p-2 rounded-circle">engineering</i>
+                    <h5 class="text-black" style="font-family: 'Franklin Gothic Medium'" >
+                        <b>Trabajadores</b>
+                    </h5>
+                    <p class="textHeight">Son las personas que laboran dentro de este edificio.</p>
+                    <a class="waves-effect waves-light text-white btn bg-warning p-2 text-center  " 
+                        href="/sistemabio/trabajadores/add" style="border-radius: 20px;"
+                    >
+                        Seleccionar<i class="material-icons  text-white btn bg-warning p-2 text-center">check_box</i>
+                    </a>
+                </div>
+            </div>
+            
+           
+        
+        </main>
+{% endblock %}

@@ -1,0 +1,84 @@
+
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+ 
+
+<header class="row" style="position: relative; height: 50vh; width: 100%;">
+  <div class="col s12 m11 l9 xl8 " style="position: absolute; top: 0px; height: 60%; left: 0px;">
+    <img alt="imagen1" src="{% static 'sistemabio/img/rec5_1.png' %}" class="responsive-image"
+      style="height: 200%; width: 80%; left: 0px; top: 0px; position: absolute; object-fit: cover;" />
+  </div>
+  <div class="col s12 m9 l9 xl8 white-text"
+    style="position: absolute; top: 50%; left: 30%; height: 100%; transform: translate(-50%, -50%); width: 50%;">
+    <br>
+    <br>
+    <blockquote>
+
+      <h2 class="subtitulo black-text ">
+        <b>
+          HUELLA <br />
+        </b>
+      </h2>
+    </blockquote>
+  </div>
+
+  <div class="col m6 l6 xl5 hide-on-small-only" style="height: 100%; position: absolute; top: 0%; right: 0%;">
+    <img alt="" src="{% static 'sistemabio/img/parteba12_3.png' %}" class="responsive-img"
+      style="position: absolute; right: -5px; top: 0px; height: 120%; width: 80%;">
+  </div>
+</header>
+
+<br ><br >
+<br >
+<br ><br >
+<br >
+<div class="col-md-8 mx-auto">
+  <div class="card">
+    <div class="card-header bg-success text-center" style="--bs-bg-opacity: .7;">
+      <h3 class="text-white">Captura la huella
+        <i class="material-icons small rounded-circle " style="font-size:40px;">fingerprint
+        </i>
+      </h3>
+    </div>
+    <div class="card-body text-left bg-success " style="--bs-bg-opacity: .3;">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col ">
+            <p class="text-black" style="font-family: 'Franklin Gothic Medium'; font-size: 20px;">
+              <b>Aquí se realiza la captura de la huella</b>
+            </p>
+            <br>
+            <p>
+             Tendrás 5 segundos para colocar tu huella del dedo indice derecho en el lector de huella
+            </p>
+            
+             
+            <div class="col ">
+              <form  method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <label for="id_dato" style="display: none;">Dato:</label>
+                <input type="hidden" name="dato" class="form-control" id="id_dato" value="1024" />
+                <br> <br>
+                <div>
+                  <button class="btn btn-info w-100" type="submit">
+                    tomar huella 
+                    <i class="material-icons "> save</i>
+                  </button>
+                </div>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br>
+
+
+
+<br>
+{% endblock %}

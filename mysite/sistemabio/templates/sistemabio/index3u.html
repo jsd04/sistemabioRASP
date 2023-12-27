@@ -1,0 +1,75 @@
+{% extends "sistemabio/base_2.html" %}
+{% load static %}
+{% block content %}
+
+<main style="position: relative; overflow: hidden; width: 100%; max-width: 1600px; margin: auto; min-height: 100vh;">
+    <img src="{% static 'sistemabio/img/Vector3.png' %}" alt="" 
+        style="position: absolute; width: 1616px; height: 1148px; top: -800px; right: -200px; z-index: -1;"
+    >
+    <div class="row">
+        <div class="col s12 l6" style="padding: 0px 4%;">
+            <br>
+            <h1 class="header   blue-grey-text text-darken-3" 
+                style="font-size: 3.1rem; font-weight: 500; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+            >
+             R & S Biométric
+            </h1>
+            <br>
+            <blockquote>
+                <h4 style="font-size: 1.7rem; font-family:'Calibri'"
+                 >
+                 <b>
+                  Acceso al edificio de condominio
+                </b> 
+                </h4>
+            </blockquote>
+        </div>
+        <div class="col s12  l6 center">
+            <img class="d-block w-100" src="{% static 'sistemabio/img/logo_ipn_guinda.svg' %}" alt="First slide" height="150px" >
+        </div>    
+    </div>
+    <div>
+        <img alt="" class="hide-on-small-only" src="{% static 'sistemabio/img/welcome.png' %}" 
+            style="display: inline-block;position: absolute; width: 100%; margin: -90px auto auto;"
+        >
+    </div>
+    <div class="row " style="top:400px;position: absolute;">
+        <h1 align='center'>¿Qué deseas hacer?</h1>
+        <br>
+        <br>
+        <div class="col-3 center">
+             <img src="{% static 'sistemabio/img/upiita-logo.png' %}" alt="First slide" height="150px" >
+        </div>
+        <div class="col-8 center ">
+            <div class="row ">
+                <div class="col s6 center">
+                    <p align='center' style="font-size:20px">Si estás registrado en el sistema puedes acceder
+                        <br>
+                        <a class="btn btn-warning active" href="/sistemabio/ingresar_usuario">
+                            Ingresar
+                            <i class="material-icons right ">send</i>
+                        </a>
+                    </p>
+                </div>
+                <div class="col s6 center">
+                    <p align='center'style="font-size:20px">¿No te has registrado?
+                        <br>
+                        <br>
+                        <a class="btn btn-outline-info text-white" href="/sistemabio/new_inquilino">
+                            Registrarse
+                            <i class="material-icons right ">edit_note</i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+            
+    </div>   
+       
+
+    <img src="{% static 'sistemabio/img/ellipse1.png' %}" alt="" 
+        style="position: absolute; width: 1616px; height: 1148px; left: 100px; bottom: -900px; z-index: -1;"
+    >
+</main>
+{% endblock %}

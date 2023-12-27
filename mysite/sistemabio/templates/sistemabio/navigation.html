@@ -1,0 +1,72 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/sistemabio/">
+      <span class="material-icons me-1">home</span>
+      R & S
+      </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">         
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+        
+      <!-- {% if user.is_authenticated %} -->
+      
+        <li class="nav-item dropdown ">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class='fas fa-cogs' style='font-size:24px; border-radius: 20px;'></i>Acciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/sistemabio/principal">Volver al menu principal
+              <i class='fas fa-address-card text-success p-2' style='font-size:24px; border-radius: 20px;'></i>
+            </a>
+            <a class="dropdown-item" href="{% url 'sistemabio:inquilinos' %}">Ver inquilinos
+              <i class='fas fa-users text-success p-2' style='font-size:24px; border-radius: 20px;'></i>
+            </a>
+            <a class="dropdown-item" href="/sistemabio/search_inquilino">Buscar
+              <i class="fa fa-search text-success p-2" style="font-size:24px; border-radius: 20px;"></i>
+            </a>
+            <a class="dropdown-item" href="/sistemabio/reporte">Generar Reporte
+              <i class="fas fa-file-alt text-success p-2" style="font-size:24px; border-radius: 20px;"></i>
+            </a>
+            <a class="dropdown-item" href="/sistemabio/perfil_administrador">Administrador
+              <i class='fas fa-user-circle text-success p-2' style='font-size:24px; border-radius: 20px;'></i>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/sistemabio/logout">Salir
+              <i class='fas fa-sign-out-alt text-success p-2' style='font-size:24px; border-radius: 20px;'></i>
+             <!-- <span class="material-icons me-1 " s>logout</span> -->
+            </a>
+            
+          </ul>
+        </li>
+        
+      <!-- {% else %} -->
+        <li class="nav-item">
+          <a class="nav-link" href="/sistemabio/signin">Entrar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sistemabio/signup">Registrarse</a>
+        </li>
+      <!-- {% endif %} -->
+      <li class="nav-item">
+        <a class="nav-link" href="/sistemabio/about">
+            <!-- <span class="material-icons me-1">info</span>About -->
+            <i class='fas fa-info-circle' style='font-size:24px; border-radius: 20px;'></i>About
+        </a>
+      </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>

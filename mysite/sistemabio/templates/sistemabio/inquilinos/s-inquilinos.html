@@ -1,0 +1,111 @@
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+<header class="row" style="position: relative; height: 50vh; width: 100%;">
+  <div
+        class="col s12 m11 l9 xl8 "
+        style="position: absolute; top: 0px; height: 120%; left: 0px; right: 40px; width: 100%;"
+      >
+      <img alt="" src="{% static 'sistemabio/img/ba5_1.png' %}" 
+              style="position: absolute; right: -12px; top: 20%; width: 100%; height:80%"
+          >
+      <img alt="" src="{% static 'sistemabio/img/ba6_1.png' %}"
+              style="position: absolute;  right: -12px; top: 0px; width: 100%; height:90%">
+  </div>
+  <div class="col s4 hide-on-small-only" 
+      
+       style="position: absolute; top: 70%; left: 80%; height: 100%; transform: translate(-50%, -50%); width: 30%;" 
+  >
+      <h1 class="titulo text-black" style="font-size:40px">
+        Buscador DE <b>INQUILINOS</b>
+      </h1>
+      <blockquote>
+        <h4 class="subtitulo black-text" style="font-size:20px">
+          <b>
+            Aquí puedes buscar los registros <br /> de los Inquilinos por nombre, piso o departamento.
+          </b>
+        </h4>
+      </blockquote>
+  </div>
+
+  <div class=" col s12 m9 l9 xl8 white-text" style="height: 100%; position: absolute; top: 0%; right: 50%;">
+    <img alt="" src="{% static 'sistemabio/img/parteba12_4.png' %}" 
+    class="responsive-img" style="position: absolute; right: 0px; top: 0px; height: 120%; width: 50%;">
+  </div>  
+</header>
+<br />
+<br />
+<br />
+<div class="row justify-content-end">
+  <div class="col-3 align-self-end">
+    <a class="waves-effect waves-light text-white btn p-2 text-center  " style="background: rgb(29, 240, 134);border-radius: 20px;"
+              href="javascript:window.history.back(); "
+          > 
+      <i class="material-icons  text-white large rounded-circle btn p-2 text-center">arrow_back
+      </i>       Regresar              
+    </a>
+  </div>
+</div>
+<div class="container p-5">
+  <div class="row justify-content-center" >
+    <div class="col-8 align-self-center" >
+      <div class="container-fluid text-left bg-info p-2" style="--bs-bg-opacity: .5;"> 
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+          method="POST">
+          {% csrf_token %}
+          <div class="input-group">
+            <!-- <input type="text" class="form-control bg-light border-1 small solid rgb(61, 101, 213)" placeholder="Buscar" name="buscar" value="{{ request.POST.buscar }}"> -->
+            <input type="text" class="form-control bg-light border-1 small solid rgb(61, 101, 213)" placeholder="Nombre" name="nombre">
+            <input type="text" class="form-control bg-light border-3 small solid rgb(61, 101, 213)" placeholder="Piso" name="piso"  >
+            <!-- <input type="text" class="form-control bg-light border-3 small solid rgb(61, 101, 213)" placeholder="Curp" name="curp" value="{{ request.POST.curp }}" > -->
+            <input type="text" class="form-control bg-light border-3 small solid rgb(61, 101, 213)" placeholder="Departamento" name="departamento" >
+
+      
+            <button class="btn btn-success" type="submit">
+              <span class="material-symbols-rounded">
+                search
+              </span>
+            </button>                                       
+          </div>
+          
+        </form> 
+      </div>                      
+    </div>
+  </div>
+  <div class="row bg-success" style=" border: 0.5px solid rgb(13, 126, 79); margin: 25px 0px; --bs-bg-opacity:.5">
+    <div class="container text-center pt-5" style="font-family: 'Franklin Gothic Medium'">
+      <h3 class=" text-white">
+        Las coincidencias son:
+      </h3>
+    </div>
+  
+    {% for inquilino in inquilinos %}
+    <div class="col-md-3">
+      <br>
+      <div class="card" style=" border: 0.3px solid rgb(28, 147, 64);  ">
+        <div class="card-body ">
+          <div class="d-flex p-1 flex-row-reverse">
+            <a  href="{% url 'sistemabio:detail_inquilino' inquilino.id_usuario %}">
+              <i class='fas fa-info-circle' style='font-size:30px'></i>
+              <!-- <span class="material-symbols-rounded">info</span> -->
+            </a> 
+          </div>
+           Usuario:
+          <h4 class="card-title ">
+           {{ inquilino.nombre}} {{ inquilino.ap_paterno}} {{ inquilino.ap_materno}}
+          </h4>
+          <p>Tipo de usuario: {{ inquilino.id_perfil }}</p>
+          <p>Curp: {{ inquilino.curp }} </p>
+          <p>No. Piso: {{ inquilino.piso }} </p>
+          <p>No. Departamento: {{ inquilino.departamento }} </p>
+        </div>
+      </div>
+        <br>
+    </div>
+  {% endfor %}
+     
+  </div>
+</div>
+
+
+{% endblock %} 

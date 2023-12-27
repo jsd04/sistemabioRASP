@@ -1,0 +1,178 @@
+
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+ 
+
+<header class="row" style="position: relative; height: 50vh; width: 100%;">
+  <div class="col s12 m11 l9 xl8 " style="position: absolute; top: 0px; height: 60%; left: 0px;">
+    <img alt="imagen1" src="{% static 'sistemabio/img/rec4.png' %}" class="responsive-image"
+      style="height: 200%; width: 80%; left: 0px; top: 0px; position: absolute; object-fit: cover;" />
+  </div>
+  <div class="col s12 m9 l9 xl8 white-text"
+    style="position: absolute; top: 50%; left: 30%; height: 100%; transform: translate(-50%, -50%); width: 50%;">
+    <br>
+    <br>
+    <blockquote>
+
+      <h2 class="subtitulo black-text ">
+        <b>
+          VOZ <br />
+        </b>
+      </h2>
+    </blockquote>
+  </div>
+
+  <div class="col m6 l6 xl5 hide-on-small-only" style="height: 100%; position: absolute; top: 0%; right: 0%;">
+    <img alt="" src="{% static 'sistemabio/img/parteba9.png' %}" class="responsive-img"
+      style="position: absolute; right: -5px; top: 0px; height: 100%; width: 50%;">
+  </div>
+</header>
+<br />
+<br />
+<br />
+
+<div class="col-md-8 mx-auto">
+  <div class="card">
+    <div class="card-header bg-success text-center" style="--bs-bg-opacity: .7;">
+      <h3 class="text-white">Captura la voz
+        <i class="material-icons small rounded-circle " style="font-size:40px;">mic
+        </i>
+      </h3>
+    </div>
+    <div class="card-body text-left bg-success " style="--bs-bg-opacity: .3;">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col ">
+            <p class="text-black" style="font-family: 'Franklin Gothic Medium'; font-size: 20px;">
+              <b>Aquí se realiza la captura de voz</b>
+            </p>
+            <br>
+            <p>
+              Al oprimir el boton de "Record" tendrás 5 segundos para decir la siguiente frase:
+              "Acceso al edificio RS"
+            </p>
+            <div class="d-flex justify-content-center">
+              <a href="javascript:void(0);" class="btn btn-warning" id="record">Record</a>
+            </div>
+            <br> <br>
+            <div class="d-flex justify-content-center">
+              <div id="sound-clip"></div>
+            </div>
+              <!-- <script src="{% static 'sistemabio/biometricos/voiceMemo.js' %}"></script> -->
+            <script language="JavaScript">
+              // Set up the AudioContext.
+              const audioCtx = new AudioContext();
+              // Top-level variable keeps track of whether we are recording or not.
+              let recording = false;
+              let audioData = null;
+              let base64Recording = null; // Variable para almacenar la grabación en base64
+              let timeoutID = null; // Variable para almacenar el ID del temporizador
+
+              // Function to stop recording
+              function stopRecording() {
+                if (recording) {
+                  mediaRecorder.stop();
+                  recording = false;
+                  $("#record").html("Record");
+                  clearTimeout(timeoutID); // Clear the timer
+                }
+              }
+              // Ask the user for access to the microphone.
+              if (navigator.mediaDevices) {
+                navigator.mediaDevices.getUserMedia({ "audio": true }).then((stream) => {
+                  // Instantiate the media recorder.
+                  const mediaRecorder = new MediaRecorder(stream);
+                  // Create a buffer to store the incoming data.
+                  let chunks = [];
+                  mediaRecorder.ondataavailable = (event) => {
+                      chunks.push(event.data);
+                  }
+                  // When you stop the recorder, create an empty audio clip.
+                  mediaRecorder.onstop = (event) => {
+                    const audio = new Audio();
+                    audio.setAttribute("controls", "");
+                    $("#sound-clip").append(audio);
+                    $("#sound-clip").append("<br />");
+                    // Combine the audio chunks into a blob, then point the empty audio clip to that blob.
+                    const blob = new Blob(chunks, { "type": "audio/ogg; codecs=opus" });
+                    audio.src = window.URL.createObjectURL(blob);
+                    // Save the audio data for later use.
+                    audioData = blob;
+                    // // Set the audio data to the input field with id "id_dato".
+                    // const audioURL = window.URL.createObjectURL(audioData);
+                    // document.getElementById("id_dato").value = audioURL;
+                    
+                    // Convierte los datos de audio a base64
+                    const reader = new FileReader();
+                    reader.onload = function () {
+                      const base64Recording = reader.result.split(",")[1]; // Extrae la parte de datos en base64
+                      // Asigna la cadena base64 al campo "id_dato"
+                      document.getElementById("id_dato").value = base64Recording;
+                    };
+                    reader.readAsDataURL(audioData);
+                    // Clear the `chunks` buffer so that you can record again.
+                    chunks = [];
+                  };
+                  // Set up an event handler for the "Record" button.
+                  $("#record").on("click", () => {
+                    if (recording) {
+                      mediaRecorder.stop();
+                          recording = false;
+                          $("#record").html("Record");
+                      } else {
+                            mediaRecorder.start();
+                            recording = true;
+                            $("#record").html("Stop");
+
+                            // Set a timer to stop recording after 5 seconds (5000 milliseconds)
+                            timeoutID = setTimeout(() => {
+                              stopRecording(); // Stop recording after 5 seconds
+                            }, 8000);
+                      }
+                  });
+                }).catch((err) => {
+                    // Show an alert when the browser is unable to access the microphone.
+                    alert("Oh no! Your browser cannot access your computer's microphone.");
+                });
+              } else {
+                // Show an alert when the browser cannot access any media devices.
+                alert("Oh no! Your browser cannot access your computer's microphone. Please update your browser.");
+              }
+            </script>
+            <div class="col ">
+              <form  method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <label for="id_usuario">Usuario:</label>
+                <select class="form-control" type="text" id="id_usuario" name="id_usuario" >
+                  <option value="{{inquilino.id_usuario}}" selected="selected">Id {{inquilino.id_usuario}} -> {{inquilino.id_usuario}} {{inquilino.nombre}} {{inquilino.ap_paterno}} {{inquilino.ap_materno}}</option>
+                </select readonly>
+                <label for="id_tipo_sesion">Tipo de sesion:</label>
+                <select class="form-control" type="text" id="id_tipo_sesion" name="id_tipo_sesion" >
+                  <option value="2" selected="selected">Tipo sesion {{sesion.id_tipo_sesion}} ->VOZ</option>
+                </select readonly>
+                <label for="id_dato">Dato:</label>
+                <input type="text" name="dato" class="form-control" id="id_dato" />
+                <br> <br>
+                <div>
+                  <button class="btn btn-info w-100" type="submit">
+                    Guardar 
+                    <i class="material-icons "> save</i>
+                  </button>
+                </div>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br>
+
+
+
+<br>
+{% endblock %}

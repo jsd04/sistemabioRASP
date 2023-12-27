@@ -1,0 +1,106 @@
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="/static/admin/css/login.css">
+<link rel="stylesheet" href="/static/admin/css/responsive.css">
+</head>
+
+    <div class="col-md-7 mx-auto">
+      <div class="card mt-5 bg-success text-white rounded" style="--bs-bg-opacity: .7;">
+        <div class="card-header pt-5">
+          <h4 class="text-center">
+            Registrar cuenta
+          </h4>
+        </div>
+        <img
+          class="rounded-circle mx-auto d-block logo m-3 " style="width:20%"
+          src="{% static 'sistemabio/img/logo.png' %}"
+          alt="Logo"
+        />
+        <div class="card-body">
+          <form action="/sistemabio/signup/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <div class="mb-3">
+              <label for="username">Username:</label>
+              <input
+                type="text"
+                class="form-control bg-white text-dark "
+                name="username"
+                placeholder="Username"
+                autofocus
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email">Correo:</label>
+              <input
+                type="email"
+                class="form-control bg-white text-dark "
+                name="email"
+                placeholder="someone@example.com"
+                autofocus
+              />
+            </div>
+            <div class="mb-3">
+              <label for="first_name">Nombre:</label>
+              <input
+                type="first_name"
+                name="first_name"
+                class="form-control  bg-white text-dark"
+                placeholder="Nombre"
+                autofocus
+              />
+            </div>
+            <div class="mb-3">
+              <label for="last_name">Apellidos:</label>
+              <input
+                type="last_name"
+                name="last_name"
+                class="form-control bg-white text-dark"
+                placeholder="Apellidos"
+                autofocus
+                />
+            </div>    
+            <div class="mb-3">
+              La contraseña debe cumplir los siguientes requerimientos:
+              <br>*Al menos una letra
+              <br>*Al menos una letra mayúscula
+              <br>*Al menos un número
+              <br>*Al menos 8 carácteres
+              <br>
+             <label for="password1">Password:</label> 
+              <input
+                type="password"
+                class="form-control bg-white text-dark "
+                name="password1"
+                placeholder="Password"
+                value="{{password}}"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password2">Confirmar Password:</label>
+              <input
+                type="password"
+                class="form-control bg-white text-dark"
+                name="password2"
+                placeholder="Confirmación de Password"
+                value="{{confirm_password}}"
+              />
+            </div> 
+            <button class="btn btn-success btn-block">
+              Registrarse
+            </button>
+          </form>
+        </div>
+        
+              
+        <p class="text-center">¿Ya tienes una cuenta?
+          <a href="/sistemabio/signin" class="text-info">Entrar</a></p>
+      </div>
+    </div> 
+<br>
+
+
+
+ {% endblock %}

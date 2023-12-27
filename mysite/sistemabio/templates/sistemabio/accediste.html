@@ -1,0 +1,44 @@
+{% extends "sistemabio/base_2.html" %}
+{% load static %}
+{% block content %}
+    <header class="row" style="position: relative; height: 50vh; width: 100%;">
+        <div
+              class="col s12 m11 l9 xl8 "
+              style="position: absolute; top: 0px; height: 120%; left: 0px; right: 40px; width: 100%;"
+            >
+            <img alt="" src="{% static 'sistemabio/img/ba21_2.png' %}" 
+                    style="position: absolute; right: -12px; top: 20%; width: 100%; height:80%"
+                >
+            <img alt="" src="{% static 'sistemabio/img/ba12_2.png' %}" 
+                    style="position: absolute;  right: -12px; top: 0px; width: 100%; height:90%">
+        </div>
+        <div class="col s4 hide-on-small-only" 
+            
+             style="position: absolute; top: 70%; left: 80%; height: 100%; transform: translate(-50%, -50%); width: 30%;" 
+        >
+            <h1 class="titulo text-black" style="font-size:40px">
+             <!-- BIENVENIDO<b> USUARIO</b>-->
+            </h1>
+            <br>
+            <br>
+            <blockquote>
+              <h4 class="subtitulo black-text" style="font-size:40px">
+                <b>
+                  ACCEso concedido <br /> AL EDIFICIO.
+                </b>
+              </h4>
+            </blockquote>
+        </div>
+
+        <div class=" col s12 m9 l9 xl8 white-text" style="height: 100%; position: absolute; top: 0%; right: 50%;">
+          <img alt="" src="{% static 'sistemabio/img/parteba13_4.png' %}" 
+          class="responsive-img" style="position: absolute; right: -120px; top: 0px; height: 120%; width: 60%;">
+        </div>  
+    </header>
+    <br><br>
+    <div class="row justify-content-center">
+             <img   src="{% static 'sistemabio/img/bienvenido_2.png' %}"
+             style= "right: 0px; top: 0px; height: 50%; width: 50%;">
+    </div>
+
+{% endblock %}
