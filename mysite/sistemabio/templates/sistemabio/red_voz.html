@@ -1,0 +1,85 @@
+{% extends "sistemabio/base.html" %}
+{% load static %}
+{% block content %}
+    <header class="row" style="position: relative; height: 50vh; width: 100%;">
+        <div
+              class="col s12 m11 l9 xl8 "
+              style="position: absolute; top: 0px; height: 120%; left: 0px; right: 40px; width: 100%;"
+            >
+            <img alt="" src="{% static 'sistemabio/img/ba16_2.png'%}" 
+                    style="position: absolute; right: -12px; top: 20%; width: 100%; height:80%"
+                >
+            <img alt="" src="{% static 'sistemabio/img/ba9_2.png'%}"
+                    style="position: absolute;  right: -12px; top: 0px; width: 100%; height:90%">
+        </div>
+        <div class="col-md-9  " 
+            
+             style="position: absolute; top: 60%; left: 75%; height: 100%; transform: translate(-50%, -50%); width: 40%;" 
+        >
+           
+              <div class="card"  style="border: 0.5px solid rgb(80, 17, 170); margin: 25px 0px;">
+                <div class="card-header text-center" style="--bs-bg-opacity: .7;background:rgb(185, 148, 243)">
+                  <h3 class="text-white">Entrenar red neuronal de voz</h3>
+                </div>
+                <div class="card-body text-left  p-2" style="--bs-bg-opacity: .3; background:rgb(206, 184, 241)">
+                  <form method="POST" >
+                    {% csrf_token %} 
+                    <br>
+                    <p style="font-size: 20px;"> Desea entrenar la red del registro de voz ? </p>
+                    <br>
+                    <div class="text-center">
+                      <button class="btn btn-info w-50">Sí,entrenar red
+                        <!-- <i class="material-icons "> save</i> -->
+                        <i class='fas fa-file-alt' style='font-size:24px'></i>
+                      </button>
+                      </div>
+                    <br>
+                  </form>
+                  <!-- <form method="POST">
+                    {% csrf_token %}
+                    <br>
+                        <p style="font-size: 20px;"> Desea dar de baja el registro de {{inquilino.nombre}} {{inquilino.ap_paterno}} {{inquilino.ap_materno}} ? </p>
+                    <br>
+                    <div class="text-center">
+                    <button class="btn btn-danger">Sí, dar de baja</button>
+                    <a class="btn btn-info" href="javascript:window.history.back(); ">Cancelar</a>
+                    </div>
+                </form> -->
+                </div>
+              </div>
+            <!-- </div> -->
+            <!-- <blockquote>
+              <h4 class="subtitulo black-text" style="font-size:20px">
+                <b>
+                  Aquí puedes generar el reporte <br /> para visualizar la <br /> información de los Usuarios
+                </b>
+              </h4>
+            </blockquote> -->
+        </div>
+ <!--style="height: 100%; position: absolute; top: 0%; right: 0%;"
+ style="position: absolute; top: 50%; left: 30%; height: 100%; transform: translate(-50%, -50%); width: 50%;"
+ -->
+        <div class=" col s12 m9 l9 xl8 white-text" style="height: 100%; position: absolute; top: 0%; right: 50%;">
+          <img alt="" src="{% static 'sistemabio/img/parteba13_2.png' %}" 
+          class="responsive-img" style="position: absolute; right: 0px; top: 0px; height: 120%; width: 50%;">
+        </div>  
+    </header>
+      <br />
+      <br />
+      <br />
+      <br>
+
+      <div class="row justify-content-end">
+        <div class="col-3 align-self-end">
+          <a class="waves-effect waves-light text-white btn p-2 text-center  " style="background: rgb(29, 240, 134);border-radius: 20px;"
+            href="/sistemabio/principal"
+                > 
+            <i class="material-icons  text-white large rounded-circle btn p-2 text-center">arrow_back
+            </i> Regresar al menu principal            
+          </a>
+        </div>
+      </div>
+
+      <br />
+      <br />
+{% endblock %} 

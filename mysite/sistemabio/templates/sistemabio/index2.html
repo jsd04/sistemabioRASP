@@ -28,7 +28,8 @@
                   <img class="d-block w-100" src="{% static 'sistemabio/img/logo_ipn_guinda.svg' %}" alt="ipn_guida" height="200px" >
               </div>   
           </div>
-            <div>
+
+          <div>
               <img alt="" class="hide-on-small-only" src="{% static 'sistemabio/img/welcome.png' %}" 
                   style="display: inline-block; width: 100%; margin: -100px auto auto;"
               >
@@ -39,19 +40,73 @@
               </div>
               <div class="col-8 center ">
                   <div class="row ">
-                      <div class="col s6 center">
+                      <!-- <div class="col s6 center">
                           <a class=" btn btn-warning active" aria-current="page" href="/sistemabio/home_admin">
                               Adminitradores
                               <i class="material-icons right">send</i>
                           </a>
-                      </div>
-                     
-                      <div class="col s6 center">
+                      </div> 
+                      -->
+                      <div class="col m6 center">
                           <a class="btn btn-outline-info" href="/sistemabio/home_usuario">
                               Usuarios
                               <i class="material-icons right">edit_note</i>
                           </a>
                       </div>
+                      <!-- Botón para administradores -->
+  <!-- <div class="col s6 center" id="btnAdminContainer">
+    <a id="btnAdmin" class="btn btn-warning active" aria-current="page" href="/sistemabio/home_admin">
+      Adminitradores
+      <i class="material-icons right">send</i>
+    </a>
+  </div> -->
+
+  <!-- Botón para usuarios -->
+  <!-- <div class="col s6 center" id="btnUsuarioContainer">
+    <a id="btnUsuario" class="btn btn-outline-info" href="/sistemabio/home_usuario">
+      Usuarios
+      <i class="material-icons right">edit_note</i>
+    </a>
+  </div> -->
+
+  <!-- Script para controlar la visibilidad 
+  
+    // function verificarDispositivo() {
+    //   var userAgent = navigator.userAgent.toLowerCase();
+    //   console.log("User Agent:", userAgent);
+    //   var btnAdminContainer = document.getElementById("btnAdminContainer");
+    //   var btnUsuarioContainer = document.getElementById("btnUsuarioContainer");
+
+    //   if (userAgent.includes("raspberry")) {
+    //     // Ocultar el botón de administradores en la Raspberry Pi (Usuario)
+    //     btnAdminContainer.style.display = "none";
+    //   } else {
+    //     // Ocultar el botón de usuarios en la PC (Administrador)
+    //     btnUsuarioContainer.style.display = "none";
+    //   }
+    // }
+
+    // verificarDispositivo();-->
+
+    <!-- <script>
+    function verificarDispositivo() {
+      var screenWidth = window.screen.width;
+      var screenHeight = window.screen.height;
+
+      var btnAdminContainer = document.getElementById("btnAdminContainer");
+      var btnUsuarioContainer = document.getElementById("btnUsuarioContainer");
+
+      if (screenWidth <= 800 && screenHeight <= 600) {
+        // Tamaño de pantalla típico de una Raspberry Pi
+        btnAdminContainer.style.display = "none";
+      } else {
+        // Tamaño de pantalla típico de una PC
+        btnUsuarioContainer.style.display = "none";
+      }
+    }
+
+    verificarDispositivo();
+  </script> -->
                   </div>
               </div>
                   

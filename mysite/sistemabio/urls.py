@@ -1,7 +1,7 @@
 
 from django.urls import path
 from . import views
-from . import views2f, view3v, view4h
+from . import views2f, view3v, view4h, view3v3
 
 
 app_name = "sistemabio"
@@ -40,6 +40,7 @@ urlpatterns = [
 
     path("facial_usuario/",views2f.facial_usuario, name="facial_usuario"),
     path("voz_usuario/", view3v.voz_usuario,name="voz_usuario"),
+    path("red_voz/", view3v3.red_voz,name="red_voz"),
     path("huella_usuario/", view4h.huella_usuario,name="huella_usuario"),
 
     path("accediste/", views2f.accediste,name="accediste"),
